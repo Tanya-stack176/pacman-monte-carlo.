@@ -1,82 +1,26 @@
-# Pac-Man with Monte Carlo
+name: Python Package
 
-## Опис проекту
-Цей проект є модифікацією гри Pac-Man, яка використовує метод Монте-Карло для вибору напрямків руху Пакмана. Мета полягає у покращенні стратегії уникнення привидів.
+on: [push, pull_request]
 
-## Інструкції по налаштуванню
+jobs:
+  build:
 
-1. Клонуйте репозиторій:
-   ```bash
-   git clone https://github.com/your-username/pacman-monte-carlo.git
-   cd pacman-monte-carlo
-   pip install -r requirements.txt
-   python pacman.py
-   Ось як може виглядати файл `README.md` для вашого репозиторію. Я надам форматування для тексту, яке зазвичай використовується в документації на GitHub.
+    runs-on: ubuntu-latest
 
-### Приклад `README.md`
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-```markdown
-# Pac-Man with Monte Carlo
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
 
-## Опис проекту
-Цей проект є модифікацією гри Pac-Man, яка використовує метод Монте-Карло для вибору напрямків руху Пакмана. Мета полягає у покращенні стратегії уникнення привидів.
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
 
-## Інструкції по налаштуванню
-
-1. Клонуйте репозиторій:
-   ```bash
-   git clone https://github.com/your-username/pacman-monte-carlo.git
-   ```
-2. Перейдіть до директорії проекту:
-   ```bash
-   cd pacman-monte-carlo
-   ```
-3. Встановіть необхідні бібліотеки. Зазвичай це можна зробити за допомогою pip:
-   ```bash
-   pip install -r requirements.txt
-   ```
-4. Запустіть гру:
-   ```bash
-   python pacman.py
-   ```
-
-## Опис алгоритму Монте-Карло
-
-У модифікованій версії гри Пакман використовує метод Монте-Карло для вибору напрямків руху. Логіка вибору напрямку базується на наступному:
-- Якщо привид знаходиться в межах відстані \( N \) від Пакмана, Пакман уникне напряму, який веде до привида або в напрямку, де привид може його наздогнати.
-- Вибір напряму здійснюється випадково серед тих, що не ведуть до привидів або не є заблокованими.
-
-## Результати тестування
-
-### Лабіринт 20x20
-- **\( N = 3 \)**:
-  ![Скріншот 20x20 N=3](path/to/screenshots/20x20_N3.png)
-- **\( N = 5 \)**:
-  ![Скріншот 20x20 N=5](path/to/screenshots/20x20_N5.png)
-- **\( N = 7 \)**:
-  ![Скріншот 20x20 N=7](path/to/screenshots/20x20_N7.png)
-
-### Лабіринт 30x30
-- ** N = 3*:
-  ![Скріншот 30x30 N=3](path/to/screenshots/30x30_N3.png)
-- ** N = 5**:
-  ![Скріншот 30x30 N=5](path/to/screenshots/30x30_N5.png)
-- **N = 7 **:
-  ![Скріншот 30x30 N=7](path/to/screenshots/30x30_N7.png)
-
-### Лабіринт 40x40
--  N = 3 :
-  ![Скріншот 40x40 N=3](path/to/screenshots/40x40_N3.png)
--  N = 5 **:
-  ![Скріншот 40x40 N=5](path/to/screenshots/40x40_N5.
-  - N = 7**:
-  ![Скріншот 40x40 N=7](path/to/screenshots/40x40_N7.png)
-```
-
-### Як виглядатиме файл `README.md` на GitHub:
-
-- **Назва проекту**: Великі літери та жирний шрифт.
-- **Опис проекту**: Короткий опис і мета проекту.
-- **Інструкції по налаштуванню**: Кроки для установки та запуску проекту.
-- **Опис алгоритму Монте-Карло**: Деталізований опис реалізації алгоритму.
-- **Результати тестування**: Перелік тестів з відповідними скріншотами, що демонструють результати
+    - name: Run tests
+      run: |
+        python -m unittest discover -s tests
