@@ -37,6 +37,4 @@ class MonteCarloPacman(Pacman):
 # Використання класу в грі:
 if __name__ == "__main__":
     maze = Maze("maze2.txt")
-    pacman = MonteCarloPacman()
-    ghosts = [Ghost("ghost1", maze), Ghost("ghost2", maze)]
-    pacman.play_game(maze, ghosts)
+    pacman = MonteCarloPacman 
