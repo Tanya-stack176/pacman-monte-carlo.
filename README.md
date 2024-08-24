@@ -1,4 +1,3 @@
-# pacman-monte-carlo.
 name: Python Package
 
 on: [push, pull_request]
