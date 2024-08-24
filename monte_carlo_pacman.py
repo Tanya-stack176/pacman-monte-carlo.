@@ -39,5 +39,4 @@ if __name__ == "__main__":
     maze = Maze("maze2.txt")
     pacman = MonteCarloPacman()
     ghosts = [Ghost("ghost1", maze), Ghost("ghost2", maze)]
-    pacman.play_game(maze, print("List length:", len(my_list))
-print("Accessing index:", index)
+    pacman.play_game(maze, ghosts)
