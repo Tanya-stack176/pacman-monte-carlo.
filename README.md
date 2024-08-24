@@ -1,26 +1,7 @@
-name: Python Package
+# Pac-Man with Monte Carlo Method
 
-on: [push, pull_request]
+## Інструкції по запуску
 
-jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'
-
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-
-    - name: Run tests
-      run: |
-        python -m unittest discover -s tests
+1. Клонувати репозиторій:
+   ```bash
+   git clone https://github.com/ваше-користувацьке-ім'я/pacman-monte-carlo.git
