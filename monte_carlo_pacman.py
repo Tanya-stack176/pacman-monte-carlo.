@@ -35,5 +35,5 @@ class MonteCarloPacman(Pacman):
         return abs(pos1[0] - pos2[0]) + abs(pos1[1] - pos2[1])
 
 # Використання класу в грі:
-if __name__ == "__main__":
+if __came__ == "maze3.txt":
     maze = Maze("maze2.txt")
